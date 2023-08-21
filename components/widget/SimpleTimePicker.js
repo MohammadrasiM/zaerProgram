@@ -78,7 +78,7 @@ function SimpleTimePicker({ title, setValue }) {
               placeholder: item?.title,
               disabled: (item?.title == "ماه" && !dates[2]?.value) || (item?.title == "روز" && !dates[1]?.value),
             }}
-            isSearchable={false}
+            isSearchable={true}
             list={item?.list}
             property={"name"}
             onSelect={(v) => {

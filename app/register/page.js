@@ -3,7 +3,7 @@ import FormInputs from "@/components/shared/form/FormInputs";
 import FormSelect from "@/components/shared/form/FormSelect";
 import SimpleTimePicker from "@/components/widget/SimpleTimePicker";
 import React, { useState } from "react";
-import { citites, insurancePolicies, sexList } from "@/utils/constants";
+import { citites, dispatchPlaces, insurancePolicies, sexList } from "@/utils/constants";
 import RegisterGroup from "@/components/RegisterGroup";
 import FixedButton from "@/components/shared/button/FixedButton";
 import Button from "@/components/shared/button/Button";
@@ -49,23 +49,32 @@ const Register = () => {
           onChangeText={(e) => onChange("last_name", e)}
         />
       </div>{" "}
-      <Divider moreClass={"mt-4"} />
-      <SimpleTimePicker setValue={setDateOfBirth} title={"تاریخ تولد"} />
-      <Divider moreClass={"mt-4"} />
       <FormSelect
         parentClass="my-4"
-        title={"مرز خروج"}
+        title={"جنسیت"}
         titleClass="mr-4"
         isSearchable={false}
-        list={citites}
+        list={sexList}
         property={"title"}
         onSelect={(v) => {
-          onChange("exit_border", v.id);
+          onChange("sex", v.id);
         }}
-        value={data?.exit_border || null}
+        value={data?.sex || null}
       />
-      <SimpleTimePicker setValue={setDateOfDispatch} title={"تاریخ خروج"} />
-      <Divider moreClass={"mt-4"} />
+      <SimpleTimePicker setValue={setDateOfBirth} title={"تاریخ تولد"} />
+      <div className="grid grid-cols-1 mt-4 gap-4 md:grid-cols-2">
+        {" "}
+        <FormInputs
+          value={data?.em_phone}
+          onChangeText={(e) => onChange("em_phone", e)}
+          item={{ keyboard: "number", title: "تلفن ضروری", maxLength: 13 }}
+        />
+        <FormInputs
+          value={data?.mobile}
+          onChangeText={(e) => onChange("mobile", e)}
+          item={{ keyboard: "number", title: "موبایل", maxLength: 13 }}
+        />
+      </div>
       <div className="grid grid-cols-2 gap-4">
         {" "}
         <FormSelect
@@ -93,54 +102,43 @@ const Register = () => {
           value={data?.city || null}
         />
       </div>{" "}
-      <Divider moreClass={"my-4"} />
-      <SimpleTimePicker setValue={setDateOfDispatch} title={"تاریخ برگشت"} />
+      <FormInputs value={data?.em_phone} onChangeText={(e) => onChange("address", e)} item={{ title: "آدرس" }} />
+      <FormInputs
+        value={data?.post_code}
+        onChangeText={(e) => onChange("post_code", e)}
+        item={{ keyboard: "number", title: "کد پستی", maxLength: 10 }}
+      />
+      <Divider moreClass={"mt-4"} />
+      <p className="my-4"> اطلاعات مرزی :</p>
+      <FormSelect
+        parentClass="my-4"
+        title={"مرز خروجی"}
+        titleClass="mr-4"
+        isSearchable={false}
+        list={dispatchPlaces}
+        property={"title"}
+        onSelect={(v) => {
+          onChange("exit_border", v.id);
+        }}
+        value={data?.exit_border || null}
+      />
+      <SimpleTimePicker setValue={setDateOfDispatch} title={"تاریخ رفت"} />
+      <div className="my-4"></div>
       <FormSelect
         parentClass="my-4"
         title={"مرز برگشت"}
         titleClass="mr-4"
         isSearchable={false}
-        list={citites}
+        list={dispatchPlaces}
         property={"title"}
         onSelect={(v) => {
           onChange("return_border", v.id);
         }}
         value={data?.return_border || null}
       />{" "}
-      <Divider moreClass={"my-4"} />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {" "}
-        <FormInputs
-          value={data?.em_phone}
-          onChangeText={(e) => onChange("em_phone", e)}
-          item={{ keyboard: "number", title: "تلفن ضروری", maxLength: 13 }}
-        />
-        <FormInputs
-          value={data?.post_code}
-          onChangeText={(e) => onChange("post_code", e)}
-          item={{ keyboard: "number", title: "کد پستی", maxLength: 10 }}
-        />
-      </div>
-      <FormInputs value={data?.em_phone} onChangeText={(e) => onChange("address", e)} item={{ title: "آدرس" }} />
-      <Divider moreClass={"my-4"} />
-      <FormInputs
-        value={data?.mobile}
-        onChangeText={(e) => onChange("mobile", e)}
-        item={{ keyboard: "number", title: "موبایل", maxLength: 13 }}
-      />
-      <FormSelect
-        parentClass="my-4"
-        title={"جنسیت"}
-        titleClass="mr-4"
-        isSearchable={false}
-        list={sexList}
-        property={"title"}
-        onSelect={(v) => {
-          onChange("sex", v.id);
-        }}
-        value={data?.sex || null}
-      />
-      <FormInputs item={{ title: "کد ملی سرگروه" }} />
+      <SimpleTimePicker setValue={setDateOfDispatch} title={"تاریخ برگشت"} />
+      {/* <Divider moreClass={"my-4"} /> */}
+      {/* <FormInputs item={{ title: "کد ملی سرگروه" }} /> */}
       <RegisterGroup data={data} onChange={onChange} />
       <Button
         containerClass="w-full"

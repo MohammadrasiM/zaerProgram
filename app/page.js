@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from "../components/shared/button/Button";
-
+import { useCaptcha } from "@/components/shared/useCaptcha";
 import { ApiCall } from "../helpers/ApiCall";
 import { p2e } from "../helpers/NumberConverter";
 
@@ -17,7 +17,7 @@ const Login = ({ searchParams }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const redirect_url = searchParams?.redirect_url ?? null;
-
+  const { captcha, createCaptcha } = useCaptcha();
   const [mobile, setMobile] = useState("");
   const [disable, setDisable] = useState(false);
   const [numberOne, setNumberOne] = useState(0);
@@ -28,6 +28,7 @@ const Login = ({ searchParams }) => {
   useEffect(() => {
     setNumberOne(Math.floor(Math.random() * (59 - 1 + 1)) + 1);
     setnumberTwo(Math.floor(Math.random() * (59 - 1 + 1)) + 1);
+    createCaptcha();
   }, [again]);
   useEffect(() => {
     document.addEventListener("keydown", _onKeyDown);
@@ -54,9 +55,8 @@ const Login = ({ searchParams }) => {
 
   /* ------------------------------- SUBMIT FORM ------------------------------ */
   function onSubmit() {
-    if (Number(sum) != numberTwo + numberOne) {
-      console.log("setAgainsetAgainsetAgain");
-      Notify({ body: "جمع اعداد درست نمیباشد" });
+    if (captcha != sum) {
+      Notify({ body: " کئ امنیتی وارد شده صحیح نیست" });
       setAgain(!again);
     } else {
       dispatch({
@@ -133,13 +133,13 @@ const Login = ({ searchParams }) => {
                   value={mobile}
                 />
                 <div className="flex mt-4  items-center justify-center py-4 gap-6  flex-row">
-                  <p className="text-sm w-12"> جمع :</p>{" "}
+                  {/* <p className="text-sm w-12"> کد :</p>{" "} */}
                   <FormInputs
                     item={{
                       keyboard: "number",
                       isMandatory: true,
 
-                      placeholder: "جمع مقادیر روبرو",
+                      placeholder: "کد امنیتی ",
                       containerClass: "!mb-0",
                       inputClass: "placeholder:text-start",
                       autoFocus: false,
@@ -150,12 +150,22 @@ const Login = ({ searchParams }) => {
                     }}
                     value={sum}
                   />
-                  <div className=" flex items-center text-xl font-semibold text-green-600  opacity-75 gap-2">
+                  {/* <div className=" flex items-center text-xl font-semibold text-green-600  opacity-75 gap-2">
                     <p key={"numberOne"}>{numberOne}</p>
                     <p>+</p>
                     <p key={"numberTwo"}>{numberTwo}</p>
+                  </div> */}
+                  <div
+                    id="captcha"
+                    className="w-24 "
+                    onLoad={() => {
+                      createCaptcha();
+                    }}
+                  >
+                    <hr className="w-full h-2" />
                   </div>
                 </div>
+
                 {/* COUNTRY SELECTOR */}
                 {/* <div className="w-3/12 md:w-2/12 cursor-pointer rounded-xl flex justify-center items-center bg-neutral-100 dark:bg-zinc-700 border border-gray-300 dark:border-zinc-600 py-3   text-center  font-bold">
                 {isLoading ? (

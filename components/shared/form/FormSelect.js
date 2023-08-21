@@ -53,7 +53,7 @@ const FormSelect = ({
     if (!query) setOptions(list);
     else {
       const res = list.filter((e) =>
-        e[property].toLowerCase().replace(/\s+/g, "").includes(query.toLowerCase().replace(/\s+/g, ""))
+        `${e[property]}`.toLowerCase().replace(/\s+/g, "").includes(query.toLowerCase().replace(/\s+/g, ""))
       );
       setOptions(res);
     }
@@ -90,7 +90,9 @@ const FormSelect = ({
                     ? options.find((_) => _.id == value)[property]
                     : ""
                 }
-                className="bg-white   target:bg-white dark:bg-zinc-800 w-5/6 "
+                className={`bg-white   target:bg-white dark:bg-zinc-800 w-5/6 ${
+                  item?.disabled ? "opacity-30 !bg-[#E5E5E5]" : ""
+                } `}
               />
             ) : (
               <div className={`${value ? "opacity-100" : "opacity-70"} w-5/6 ${value && inputClass}`}>

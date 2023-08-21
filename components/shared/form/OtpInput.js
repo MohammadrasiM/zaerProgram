@@ -6,12 +6,11 @@ function OtpInput({ value, setValue, refresh = false }) {
     value2: "",
     value3: "",
     value4: "",
-    value5: "",
   });
   //   const [input6, setInput6] = useState("");
 
   useMemo(() => {
-    setValue(`${inputs.value1}${inputs.value2}${inputs.value3}${inputs.value4}${inputs.value5}`);
+    setValue(`${inputs.value1}${inputs.value2}${inputs.value3}${inputs.value4}`);
   }, [inputs]);
   useMemo(() => {
     setInputs({
@@ -19,7 +18,6 @@ function OtpInput({ value, setValue, refresh = false }) {
       value2: "",
       value3: "",
       value4: "",
-      value5: "",
     });
   }, [refresh]);
   const handleNextInput = (e) => {
@@ -41,7 +39,7 @@ function OtpInput({ value, setValue, refresh = false }) {
     }
   };
 
-  const values = ["value1", "value2", "value3", "value4", "value5"];
+  const values = ["value1", "value2", "value3", "value4"];
   return (
     <div id="otp" className="flex flex-row justify-between items-center text-center px-2 mt-5 directon-ltr ">
       {values?.map((field, index) => (

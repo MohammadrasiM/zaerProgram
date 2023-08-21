@@ -68,13 +68,13 @@ function Otp({ searchParams }) {
     }
   }
   useEffect(() => {
-    if (otp?.length == 5) {
+    if (otp?.length == 4) {
       validOtp();
     }
   }, [otp]);
 
   function validOtp() {
-    if (!otp || otp.length <= 4) {
+    if (!otp || otp.length <= 3) {
     } else {
       onSubmit();
     }
