@@ -1,0 +1,304 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../public/assets/fonts/woff/IRANSansWeb(FaNum).woff") format("woff");
+}
+
+/* ------------------------------------      MEDIUM      ------------------------------------ */
+@font-face {
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../public/assets/fonts/woff/IRANSansWeb(FaNum)_Medium.woff") format("woff");
+}
+
+/* ------------------------------------       LIGHT      ------------------------------------ */
+@font-face {
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../public/assets/fonts/woff/IRANSansWeb(FaNum)_Light.woff") format("woff");
+}
+
+/* ------------------------------------       LIGHTER      ------------------------------------ */
+@font-face {
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../public/assets/fonts/woff/IRANSansWeb(FaNum)_UltraLight.woff") format("woff");
+}
+
+/* ------------------------------------       BOLD       ------------------------------------ */
+@font-face {
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../public/assets/fonts/woff/IRANSansWeb(FaNum)_Bold.woff") format("woff");
+}
+
+/* ------------------------------------       POPPINS       ------------------------------------ */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../public/assets/fonts/woff/Poppins-SemiBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../public/assets/fonts/woff/Poppins-Regular.woff") format("woff");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "IRANSans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #0d98ba;
+  /* font-size: 110%; */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+  display: none;
+}
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+button:focus {
+  outline: 0;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+.text-en {
+  font-family: sans-serif !important;
+}
+.header-extra-style {
+  height: 65px;
+  z-index: 2;
+}
+
+.app-container {
+  @apply flex flex-col h-full px-3   pt-16 pb-4;
+}
+.app-size {
+  @apply w-full md:w-[60%] mx-auto lg:w-1/2;
+}
+.app-background {
+  @apply bg-white dark:bg-zinc-900;
+}
+.app-background-white {
+  @apply bg-white  dark:bg-zinc-700  dark:bg-zinc-900;
+}
+.app-text {
+  @apply text-gray-900 dark:text-gray-300;
+}
+/* ---------------------------------- CARD ---------------------------------- */
+.custom-card {
+  @apply bg-white  dark:bg-zinc-800    rounded-lg px-4 py-5 flex justify-between items-center;
+}
+.card {
+  @apply bg-white  dark:bg-zinc-800   w-full   h-full flex p-4 rounded-xl  ease-in-out duration-300 transition-all custom-shadow dark:shadow-none;
+}
+.card-p-0 {
+  @apply bg-white  dark:bg-zinc-800   w-full   h-full flex rounded-xl  ease-in-out duration-300 transition-all custom-shadow dark:shadow-none;
+}
+.simple-card {
+  @apply bg-white  dark:bg-zinc-800   w-full  h-full flex pb-10 p-2  md:p-6  rounded-xl ease-in-out duration-300 transition-all custom-shadow dark:shadow-none;
+}
+.simple-card-p-0 {
+  @apply bg-white  dark:bg-zinc-800   w-full  h-full flex    rounded-xl ease-in-out duration-300 transition-all custom-shadow dark:shadow-none;
+}
+
+/* --------------------------------- HEADER --------------------------------- */
+.header-content-container {
+  @apply fixed top-0   right-0 left-0  header-extra-style;
+}
+.header-container {
+  @apply w-full flex  justify-between items-center px-2  h-full;
+}
+
+/* ---------------------------------- FORM ---------------------------------- */
+.form-control {
+  @apply bg-white   text-gray-900   text-sm  flex px-3 py-3 focus:outline-none dark:bg-zinc-800 dark:border-zinc-600  dark:text-white disabled:bg-neutral-200 dark:disabled:bg-zinc-700;
+}
+
+/* --------------------------------- BUTTON --------------------------------- */
+.btn-primary {
+  @apply bg-green-400  text-white border-2 border-green-400  hover:ring-4 hover:ring-green-400/50 dark:hover:ring-green-400/50 cursor-pointer;
+}
+.btn-primary-green {
+  @apply bg-green-500  text-white border-2 border-green-500  hover:ring-4 hover:ring-green-500/50 dark:hover:ring-green-500/50 cursor-pointer;
+}
+
+/* ---------------------------------- AUTH ---------------------------------- */
+.auth-container {
+  @apply w-full 2xl:w-3/4  mx-auto bg-white/80 dark:bg-zinc-800 pt-4 xl:px-6 lg:px-10  md:shadow-card   md:dark:shadow-cardDark md:rounded-20;
+}
+.container {
+  @apply w-full px-4 overflow-x-hidden  max-w-full   mx-auto bg-white    dark:bg-zinc-900   pb-24  pt-16   md:rounded-md;
+}
+.container-tabs {
+  @apply w-full overflow-x-hidden  max-w-full   mx-auto bg-white    dark:bg-zinc-900  pt-16 pb-14   md:rounded-md;
+}
+.products-container {
+  @apply w-full  max-w-full overflow-x-hidden  mx-auto bg-white    dark:bg-zinc-900   py-28 md:py-28    md:rounded-md;
+}
+.container-p-0 {
+  @apply w-full  max-w-full overflow-x-hidden  mx-auto bg-white    dark:bg-zinc-900     md:rounded-md;
+}
+.auth-input {
+  @apply w-full rounded-xl bg-white  dark:bg-zinc-700  dark:bg-zinc-700 border border-gray-300 dark:border-zinc-600 py-3.5 px-2  text-center  font-bold transition-all  focus:bg-neutral-50 dark:focus:bg-zinc-800 placeholder:text-sm;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                        react bottom sheet customize                        */
+/* -------------------------------------------------------------------------- */
+@media only screen and (min-width: 1024px) {
+  :root {
+    --rsbs-max-w: calc(100vw * 0.5);
+    --rsbs-ml: calc(100vw * 0.25);
+    --rsbs-mr: calc(100vw * 0.25);
+  }
+}
+[data-rsbs-header] {
+  box-shadow: none !important;
+}
+[data-theme="dark"] {
+  --rsbs-bg: #27272a;
+}
+[data-theme="light"] {
+  --rsbs-bg: #fff;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                        end react bottom sheet customize                    */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                                  CALENDAR                                  */
+/* -------------------------------------------------------------------------- */
+
+.Calendar {
+  @apply bg-white  dark:bg-zinc-700  dark:bg-zinc-800;
+  box-shadow: none !important;
+}
+
+.Calendar__monthText,
+.Calendar__yearText,
+.Calendar__day {
+  @apply dark:text-neutral-300;
+}
+.Calendar__monthSelector {
+  @apply dark:bg-zinc-700;
+}
+.Calendar__monthSelectorItem {
+  @apply dark:text-neutral-300 dark:hover:text-gray-700;
+}
+.Calendar__monthSelectorItemText {
+  @apply dark:hover:bg-zinc-600;
+}
+.Calendar__yearSelector {
+  @apply dark:bg-zinc-700;
+}
+.Calendar__monthArrow {
+  @apply dark:invert;
+}
+.Calendar__yearSelectorWrapper {
+  @apply dark:before:bg-gradient-to-t from-zinc-600 to-zinc-700 dark:after:bg-gradient-to-b from-zinc-600 to-zinc-700;
+}
+.Calendar__yearSelectorItem {
+  @apply dark:text-neutral-300 dark:hover:text-gray-700;
+}
+.Calendar__yearSelectorItemText {
+  @apply dark:hover:bg-zinc-600;
+}
+.-today {
+  color: #0da1be !important;
+}
+.-today::after {
+  background: #0da1be !important;
+}
+.-activeBackground {
+  background: #0da1be !important;
+  color: white !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.directon-ltr {
+  direction: ltr;
+}
+.location-here {
+  z-index: 400;
+}
+.fixed-button {
+  @apply flex flex-col  w-full px-4 py-2 fixed bottom-0 items-center md:left-[24%] md:w-[52%] lg:left-[32%] lg:w-[36%];
+}
+.fixed-button-main {
+  @apply flex flex-col  w-full px-4 py-2 fixed bottom-[-2px] left-0 items-center md:left-[12.5%] md:w-3/4 lg:left-1/4 lg:w-1/2;
+}
+.absolute-button-main {
+  @apply flex flex-col  w-full px-4 py-2 absolute bottom-[-2px] left-0 items-center md:left-[12.5%] md:w-3/4 lg:left-1/4 lg:w-1/2;
+}
+/* -------------------------------------------------------------------------- */
+/*                                END CALENDAR                                */
+/* -------------------------------------------------------------------------- */
+.custom-shadow {
+  -webkit-box-shadow: 0px 0px 13px 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 13px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 13px 1px rgba(0, 0, 0, 0.15);
+}
+.custom-header-Shadow {
+  box-shadow: -4px 9px 16px -7px #ccc;
+}
+
+.form-control:disabled {
+  opacity: 50%;
+  --tw-bg-opacity: 40%;
+}
+[data-rsbs-overlay],
+[data-rsbs-backdrop],
+[data-rsbs-root]:after {
+  z-index: 10 !important;
+}

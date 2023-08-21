@@ -1,0 +1,45 @@
+{
+  "name": "zaer",
+  "short_name": "zaer",
+  "description": "zaer",
+
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+
+  "start_url": "/",
+
+  "theme_color": "#F30990",
+  "background_color": "#F30990",
+
+  "icons": [
+    {
+      "src": "assets/icons/app/android-chrome-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/app/android-chrome-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+
+    {
+      "src": "assets/icons/app/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/app/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/app/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
