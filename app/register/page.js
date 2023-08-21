@@ -3,7 +3,7 @@ import FormInputs from "@/components/shared/form/FormInputs";
 import FormSelect from "@/components/shared/form/FormSelect";
 import SimpleTimePicker from "@/components/widget/SimpleTimePicker";
 import React, { useState } from "react";
-import { citites, dispatchPlaces, insurancePolicies, sexList } from "@/utils/constants";
+import { citites, dispatchMethod, dispatchPlaces, insurancePolicies, sexList } from "@/utils/constants";
 import RegisterGroup from "@/components/RegisterGroup";
 import FixedButton from "@/components/shared/button/FixedButton";
 import Button from "@/components/shared/button/Button";
@@ -11,6 +11,7 @@ import { Divider } from "@/components/shared/Divider";
 import moment from "moment-jalaali";
 
 import Cities from "@/helpers/cities";
+import Checkbox from "@/components/shared/Checkbox";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -28,9 +29,11 @@ const Register = () => {
     mobile: "",
     group_leader: "",
     insurance: "",
+    dispatch_method: "",
   });
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [dateOfDispatch, setDateOfDispatch] = useState(null);
+  const [agree, setAgree] = useState(false);
   const onChange = (key, value) => {
     setData((e) => ({ ...e, [key]: value }));
   };
@@ -157,9 +160,31 @@ const Register = () => {
           { name: 6, id: 6 },
         ]}
       />
+      <FormSelect
+        parentClass="my-4"
+        title={"نحوه عزیمت"}
+        titleClass="mr-4"
+        isSearchable={false}
+        list={dispatchMethod}
+        property={"title"}
+        onSelect={(v) => {
+          onChange("dispatch_method", v.id);
+        }}
+        value={data?.dispatch_method || null}
+      />
       {/* <Divider moreClass={"my-4"} /> */}
       {/* <FormInputs item={{ title: "کد ملی سرگروه" }} /> */}
       <RegisterGroup data={data} onChange={onChange} />
+      <div className="flex items-center mb-4 gap-4">
+        <Checkbox
+          title={"asf"}
+          isChecked={agree}
+          onSelect={() => {
+            setAgree(!agree);
+          }}
+        />
+        <div>شرایط و مقررات را قبول دارم</div>
+      </div>
       <Button
         containerClass="w-full"
         width="w-full"

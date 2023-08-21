@@ -13,6 +13,13 @@ export const dispatchPlaces = [
   { title: "تمرچین", id: "تمرچین" },
   { title: "هوایی", id: "هوایی" },
 ];
+
+export const dispatchMethod = [
+  { title: "خودروی شخصی", id: "خودروی شخصی" },
+  { title: "خودروی عمومی", id: "خودروی عمومی" },
+  { title: "قطار", id: "قطار" },
+  { title: "هوایی", id: "هوایی" },
+];
 export const insurancePolicies = [
   { title: "بسته 1 - 350,000 ریال", id: "1" },
   { title: "بسته 2 - 450,000 ریال", id: "2" },
