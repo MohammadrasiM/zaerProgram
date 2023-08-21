@@ -14,7 +14,7 @@ export const dispatchPlaces = [
   { title: "هوایی", id: "هوایی" },
 ];
 export const insurancePolicies = [
-  { title: "بسته 1", id: "1" },
-  { title: "بسته 2", id: "2" },
-  { title: "بسته 3", id: "3" },
+  { title: "بسته 1 - 350,000 ریال", id: "1" },
+  { title: "بسته 2 - 450,000 ریال", id: "2" },
+  { title: "بسته 3- 550,000 ریال", id: "3" },
 ];

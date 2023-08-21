@@ -110,7 +110,7 @@ input:focus {
   @apply flex flex-col h-full px-3   pt-16 pb-4;
 }
 .app-size {
-  @apply w-full md:w-[98%] mx-auto;
+  @apply w-full  md:w-['80%'] xl:w-[98%] mx-auto;
 }
 .app-background {
   @apply bg-white dark:bg-zinc-900;

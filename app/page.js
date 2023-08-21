@@ -98,9 +98,9 @@ const Login = ({ searchParams }) => {
   }
 
   return (
-    <div className={`flex flex-col h-screen justify-start  md:!p-2 md:justify-center `}>
+    <div className={`flex flex-col h-full justify-start  md:!p-2 md:justify-center `}>
       <div className="auth-container h-full md:h-fit relative flex flex-row ">
-        <div className="flex flex-col px-4 md:px-9  gap-8">
+        <div className="flex w-full md:w-fit flex-col px-4 md:px-9  gap-8">
           <img
             src="/assets/images/ziarat.png"
             className="w-[35%]  mt-8 aspect-auto mx-auto object-cover max-w-[220px]"
@@ -196,7 +196,7 @@ const Login = ({ searchParams }) => {
           {/* <Divider /> */}
         </div>
         <div className="relative hidden md:block rounded-l-20 overflow-hidden">
-          <img className="w-full rounded-l-20 object-fill" src="/assets/images/arbaein.jpeg" />
+          <img className="w-full rounded-l-20 object-fill   " src="/assets/images/arbaein.jpeg" />
         </div>{" "}
       </div>
 
