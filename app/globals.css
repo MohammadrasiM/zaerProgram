@@ -110,7 +110,7 @@ input:focus {
   @apply flex flex-col h-full px-3   pt-16 pb-4;
 }
 .app-size {
-  @apply w-full md:w-[60%] mx-auto lg:w-1/2;
+  @apply w-full md:w-[98%] mx-auto;
 }
 .app-background {
   @apply bg-white dark:bg-zinc-900;
@@ -161,10 +161,10 @@ input:focus {
 
 /* ---------------------------------- AUTH ---------------------------------- */
 .auth-container {
-  @apply w-full 2xl:w-3/4  mx-auto bg-white/80 dark:bg-zinc-800 pt-4 xl:px-6 lg:px-10  md:shadow-card   md:dark:shadow-cardDark md:rounded-20;
+  @apply w-full 2xl:w-3/4  mx-auto bg-white dark:bg-zinc-800  md:shadow-card   md:dark:shadow-cardDark md:rounded-20;
 }
 .container {
-  @apply w-full px-4 overflow-x-hidden  max-w-full   mx-auto bg-white    dark:bg-zinc-900   pb-24  pt-16   md:rounded-md;
+  @apply w-full md:w-1/2 px-4 overflow-x-hidden  max-w-full   mx-auto bg-white    dark:bg-zinc-900   pb-24  pt-16   md:rounded-md;
 }
 .container-tabs {
   @apply w-full overflow-x-hidden  max-w-full   mx-auto bg-white    dark:bg-zinc-900  pt-16 pb-14   md:rounded-md;

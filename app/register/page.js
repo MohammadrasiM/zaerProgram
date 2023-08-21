@@ -3,7 +3,7 @@ import FormInputs from "@/components/shared/form/FormInputs";
 import FormSelect from "@/components/shared/form/FormSelect";
 import SimpleTimePicker from "@/components/widget/SimpleTimePicker";
 import React, { useState } from "react";
-import { citites, sexList } from "@/utils/constants";
+import { citites, insurancePolicies, sexList } from "@/utils/constants";
 import RegisterGroup from "@/components/RegisterGroup";
 import FixedButton from "@/components/shared/button/FixedButton";
 import Button from "@/components/shared/button/Button";
@@ -24,6 +24,7 @@ const Register = () => {
     post_code: "",
     mobile: "",
     group_leader: "",
+    insurance: "",
   });
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [dateOfDispatch, setDateOfDispatch] = useState(null);
@@ -33,12 +34,9 @@ const Register = () => {
 
   return (
     <div className="container !pt-0 min-h-screen h-fit  relative">
-      <img
-        src="/assets/images/zerlogo.jpg"
-        className="w-[46%] aspect-auto mx-auto object-cover max-w-[220px] mb-8 my-12"
-      />
+      <img src="/assets/images/ziarat.png" className="w-[25%]  my-8 aspect-auto mx-auto object-cover max-w-[220px]" />
+      <p className="my-4"> مشخصات فردی :</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {" "}
         <FormInputs
           value={data?.code_meli}
           onChangeText={(e) => onChange("code_meli", e)}
@@ -50,7 +48,8 @@ const Register = () => {
           value={data?.last_name}
           onChangeText={(e) => onChange("last_name", e)}
         />
-      </div>
+      </div>{" "}
+      <Divider moreClass={"mt-4"} />
       <SimpleTimePicker setValue={setDateOfBirth} title={"تاریخ تولد"} />
       <Divider moreClass={"mt-4"} />
       <FormSelect
@@ -109,20 +108,20 @@ const Register = () => {
         value={data?.return_border || null}
       />{" "}
       <Divider moreClass={"my-4"} />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {" "}
         <FormInputs
           value={data?.em_phone}
           onChangeText={(e) => onChange("em_phone", e)}
           item={{ keyboard: "number", title: "تلفن ضروری", maxLength: 13 }}
         />
-        <FormInputs value={data?.em_phone} onChangeText={(e) => onChange("address", e)} item={{ title: "آدرس" }} />
         <FormInputs
           value={data?.post_code}
           onChangeText={(e) => onChange("post_code", e)}
           item={{ keyboard: "number", title: "کد پستی", maxLength: 10 }}
         />
       </div>
+      <FormInputs value={data?.em_phone} onChangeText={(e) => onChange("address", e)} item={{ title: "آدرس" }} />
       <Divider moreClass={"my-4"} />
       <FormInputs
         value={data?.mobile}
@@ -141,7 +140,8 @@ const Register = () => {
         }}
         value={data?.sex || null}
       />
-      <RegisterGroup />
+      <FormInputs item={{ title: "کد ملی سرگروه" }} />
+      <RegisterGroup data={data} onChange={onChange} />
       <Button
         containerClass="w-full"
         width="w-full"

@@ -99,64 +99,65 @@ const Login = ({ searchParams }) => {
 
   return (
     <div className={`flex flex-col h-screen justify-start  md:!p-2 md:justify-center `}>
-      <div className="auth-container h-full md:h-fit relative flex flex-col px-4 md:px-9">
-        <img src="/assets/images/zerlogo.jpg" className="w-[46%] aspect-auto mx-auto object-cover max-w-[220px]" />
-        <div className="w-full mx-auto text-center flex items-center justify-center ">
-          <h2 className="font-medium mt-2 mb-4 text-lg ">{"ثبت نام و یا ورود کاربر"}</h2>
-        </div>
+      <div className="auth-container h-full md:h-fit relative flex flex-row ">
+        <div className="flex flex-col px-4 md:px-9  gap-8">
+          <img
+            src="/assets/images/ziarat.png"
+            className="w-[35%]  mt-8 aspect-auto mx-auto object-cover max-w-[220px]"
+          />
 
-        <div className="bg-purple-1000 w-48  mb-4 self-center h-1 rounded-full"></div>
-        <div className="my-1">
-          <p className=" font-medium  text-sm mt-2 self-center text-center mb-4">
-            {"برای ورود شماره تلفن همراه خود را وارد نمایید."}
-          </p>
-          <div className={`mb-4 w-full mx-auto flex flex-col flex-1 px-4`}>
-            <div className=" gap-2">
-              {/* <label className={`block mb-2 text-xs pr-1 font-medium text-gray-800 dark:text-gray-300`}>
+          <div className="bg-purple-1000 w-48  mb-4 self-center h-1 rounded-full"></div>
+          <div className="my-1">
+            <p className=" font-medium  text-sm mt-2 self-center text-center mb-4">
+              {"ورود به سامانه با رمز یکبار مصرف"}
+            </p>
+            <div className={`mb-4 w-full mx-auto flex flex-col flex-1 px-4`}>
+              <div className=" gap-2">
+                {/* <label className={`block mb-2 text-xs pr-1 font-medium text-gray-800 dark:text-gray-300`}>
                 شماره تلفن همراه
               </label> */}
-              <input
-                type="tel"
-                pattern="[0-9]*"
-                className="w-full md:w-full rounded-xl border dark:border-zinc-600 dark:bg-zinc-700 py-3.5 px-2  text-center  font-bold"
-                style={{ letterSpacing: 3, fontSize: 16, direction: "ltr" }}
-                id="mobile"
-                maxLength={11}
-                placeholder="- - - - - - - - - - -"
-                onChange={(e) => {
-                  setMobile(e.target.value);
-                }}
-                onFocus={(event) => {
-                  event.target.setAttribute("autocomplete", "off");
-                }}
-                value={mobile}
-              />
-              <div className="flex mt-4  items-center justify-center py-4 gap-6  flex-row">
-                <p className="text-sm"> جمع مقادیر روبرو :</p>{" "}
-                <FormInputs
-                  item={{
-                    keyboard: "number",
-                    isMandatory: true,
-
-                    placeholder: "جمع مقادیر روبرو",
-                    containerClass: "!mb-0",
-                    inputClass: "placeholder:text-start",
-                    autoFocus: false,
-                    maxLength: 12,
+                <input
+                  type="tel"
+                  pattern="[0-9]*"
+                  className="w-full placeholder:!text-xs md:w-full rounded-xl border dark:border-zinc-600 dark:bg-zinc-700 py-3.5 px-2  text-center  font-bold"
+                  style={{ fontSize: 16, direction: "ltr" }}
+                  id="mobile"
+                  maxLength={11}
+                  placeholder="تلفن همراه خود را وارد کنید"
+                  onChange={(e) => {
+                    setMobile(e.target.value);
                   }}
-                  onChangeText={(e) => {
-                    setSum(e);
+                  onFocus={(event) => {
+                    event.target.setAttribute("autocomplete", "off");
                   }}
-                  value={sum}
+                  value={mobile}
                 />
-                <div className=" flex items-center text-xl font-semibold text-green-600  opacity-75 gap-2">
-                  <p key={"numberOne"}>{numberOne}</p>
-                  <p>+</p>
-                  <p key={"numberTwo"}>{numberTwo}</p>
+                <div className="flex mt-4  items-center justify-center py-4 gap-6  flex-row">
+                  <p className="text-sm w-12"> جمع :</p>{" "}
+                  <FormInputs
+                    item={{
+                      keyboard: "number",
+                      isMandatory: true,
+
+                      placeholder: "جمع مقادیر روبرو",
+                      containerClass: "!mb-0",
+                      inputClass: "placeholder:text-start",
+                      autoFocus: false,
+                      maxLength: 12,
+                    }}
+                    onChangeText={(e) => {
+                      setSum(e);
+                    }}
+                    value={sum}
+                  />
+                  <div className=" flex items-center text-xl font-semibold text-green-600  opacity-75 gap-2">
+                    <p key={"numberOne"}>{numberOne}</p>
+                    <p>+</p>
+                    <p key={"numberTwo"}>{numberTwo}</p>
+                  </div>
                 </div>
-              </div>
-              {/* COUNTRY SELECTOR */}
-              {/* <div className="w-3/12 md:w-2/12 cursor-pointer rounded-xl flex justify-center items-center bg-neutral-100 dark:bg-zinc-700 border border-gray-300 dark:border-zinc-600 py-3   text-center  font-bold">
+                {/* COUNTRY SELECTOR */}
+                {/* <div className="w-3/12 md:w-2/12 cursor-pointer rounded-xl flex justify-center items-center bg-neutral-100 dark:bg-zinc-700 border border-gray-300 dark:border-zinc-600 py-3   text-center  font-bold">
                 {isLoading ? (
                   <SmallLoading />
                 ) : (
@@ -169,20 +170,24 @@ const Login = ({ searchParams }) => {
                   </div>
                 )}
               </div> */}
+              </div>
+              <Button
+                disabled={disable || mobile?.length != 11}
+                loading={disable}
+                title={"مرحله بعدی"}
+                onClick={() => {
+                  onSubmit();
+                }}
+                width="w-full"
+                containerClass="mt-4 mb-4 self-center w-full"
+              />
             </div>
-            <Button
-              disabled={disable || mobile?.length != 11}
-              loading={disable}
-              title={"ثبت نام / ورود"}
-              onClick={() => {
-                onSubmit();
-              }}
-              width="w-full"
-              containerClass="mt-4 mb-4 self-center w-full"
-            />
           </div>
+          {/* <Divider /> */}
         </div>
-        {/* <Divider /> */}
+        <div className="relative hidden md:block rounded-l-20 overflow-hidden">
+          <img className="w-full rounded-l-20 object-fill" src="/assets/images/arbaein.jpeg" />
+        </div>{" "}
       </div>
 
       {/* COUNTRIES MODAL */}

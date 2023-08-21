@@ -31,12 +31,7 @@ const Layout = ({ children }) => {
   return (
     // <Provider store={store}>
     <div className="app-background app-text transition-opacity">
-      <div
-        className="fixed top-0 left-0 w-full h-full bg-cover  blur-md scale-110 "
-        style={{
-          backgroundImage: "url(/assets/images/auth-background.jpg)",
-        }}
-      ></div>
+      <div className="fixed top-0 bg-[#f3f5f8]  left-0 w-full h-full bg-cover  blur-md scale-110 "></div>
       <div className="app-size " style={{ minHeight: "100vh" }}>
         <div className="w-full  mx-auto h-full ">
           {" "}

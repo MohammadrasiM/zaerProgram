@@ -133,36 +133,38 @@ function Otp({ searchParams }) {
   }
   return (
     <div className={`flex flex-col h-screen justify-start  md:!p-2 md:justify-center `}>
-      <div className="auth-container p-0 md:p-8 h-full md:h-fit relative flex flex-col px-4 md:px-9">
-        <img
-          src="/assets/images/zerlogo.jpg"
-          className="w-[46%] aspect-auto mx-auto object-cover max-w-[220px] mb-8 "
-        />
-        <div className="my-1 px-4  flex flex-col   flex-wrap ">
-          <div className="text-center font-base flex-wrap  text-dark-200 dark:text-gray-300  mt-2 mb-4 flex text-xs gap-1 items-center justify-center">
-            {" رمز یکبار مصرف به شماره همراه "}
-            <p className="text-primary-800">{mobile_number}</p> {"ارسال شد"}
-          </div>
-          <div
-            onClick={() => router.replace("/")}
-            className="flex w-full cursor-pointer flex-wrap text-orange-100  items-center gap-1.5 pl-6 justify-end"
-          >
-            {/* <img src="/assets/icons/edit-icon.svg" className="w-4 aspect-square" />{" "} */}
-            <p className="text-xs font-light text-green-500"> {"ویرایش شماره همراه "}</p>
-          </div>
+      <div className="auth-container h-full md:h-fit relative flex flex-row ">
+        <div className="flex flex-col px-4 md:px-9  gap-8">
+          <img
+            src="/assets/images/ziarat.png"
+            className="w-[35%]  mt-8 aspect-auto mx-auto object-cover max-w-[220px]"
+          />
 
-          <div className="mt-2 mb-6 ">
-            <p className="text-xs font-light  text-dark-200 dark:text-gray-300  ">
-              {"رمز یکبار مصرف ارسالی را وارد نمایید "}
-            </p>
-          </div>
-          <div className={`mb-4 w-full mx-auto flex flex-col gap-16`}>
-            <div className="flex  gap-2 flex-col">
-              <OtpInput setValue={setOtp} value={otp} refresh={reset} />
+          <div className="my-1 px-4  flex flex-col   flex-wrap ">
+            <div className="text-center font-base flex-wrap  text-dark-200 dark:text-gray-300  mt-2 mb-4 flex text-xs gap-1 items-center justify-center">
+              {" رمز یکبار مصرف به شماره همراه "}
+              <p className="text-primary-800">{mobile_number}</p> {"ارسال شد"}
+            </div>
+            <div
+              onClick={() => router.replace("/")}
+              className="flex w-full cursor-pointer flex-wrap text-orange-100  items-center gap-1.5 pl-6 justify-end"
+            >
+              {/* <img src="/assets/icons/edit-icon.svg" className="w-4 aspect-square" />{" "} */}
+              <p className="text-xs font-light text-green-500"> {"ویرایش شماره همراه "}</p>
+            </div>
+
+            <div className="mt-2 mb-6 ">
+              <p className="text-xs font-light  text-dark-200 dark:text-gray-300  ">
+                {"رمز یکبار مصرف ارسالی را وارد نمایید "}
+              </p>
+            </div>
+            <div className={`mb-4 w-full mx-auto flex flex-col gap-16`}>
+              <div className="flex  gap-2 flex-col">
+                <OtpInput setValue={setOtp} value={otp} refresh={reset} />
+              </div>
             </div>
           </div>
-        </div>
-        {/* <FixedButton
+          {/* <FixedButton
         disable={disable}
         rules={false}
         loading={disable}
@@ -172,17 +174,21 @@ function Otp({ searchParams }) {
         }}
         title={"ورود"}
       /> */}
-        <div className=" ">{_render()}</div>
-        <Button
-          containerClass={"w-full mt-4"}
-          width="w-full"
-          disable={disable}
-          loading={disable}
-          title={"ثبت نام / ورود"}
-          onClick={() => {
-            validOtp();
-          }}
-        />
+          <div className=" ">{_render()}</div>
+          <Button
+            containerClass={"w-full mt-4"}
+            width="w-full"
+            disable={disable}
+            loading={disable}
+            title={"ثبت نام / ورود"}
+            onClick={() => {
+              validOtp();
+            }}
+          />
+        </div>
+        <div className="relative hidden md:block rounded-l-20 overflow-hidden">
+          <img className="w-full rounded-l-20 object-fill" src="/assets/images/arbaein.jpeg" />
+        </div>{" "}
       </div>
     </div>
   );

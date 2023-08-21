@@ -10,7 +10,7 @@ export default function RootLayout({ children, params }) {
   }, []);
   const __findInitialDarkMode__ = () => {
     const x = localStorage.getItem("theme-mode");
-    let mode = "dark";
+    let mode = "light";
     if (x) mode = x;
     // else if (window.matchMedia) {
     //   //check browser support
@@ -26,7 +26,7 @@ export default function RootLayout({ children, params }) {
     const root = window.document.documentElement;
     root.classList.remove(colorTheme);
     root.classList.add(mode);
-    localStorage.setItem("theme-mode", mode);
+    localStorage.setItem("theme-mode", "light");
   };
   return (
     <html dir={"rtl"} lang={"fa"}>
@@ -80,7 +80,7 @@ export default function RootLayout({ children, params }) {
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/app/apple-touch-icon.png" />
       </head>
 
-      <body className="dark">
+      <body className="light">
         <Provider store={store}>
           <Layout params={params}>{children} </Layout>{" "}
         </Provider>
