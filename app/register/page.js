@@ -8,6 +8,9 @@ import RegisterGroup from "@/components/RegisterGroup";
 import FixedButton from "@/components/shared/button/FixedButton";
 import Button from "@/components/shared/button/Button";
 import { Divider } from "@/components/shared/Divider";
+import moment from "moment-jalaali";
+
+import Cities from "@/helpers/cities";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -31,6 +34,7 @@ const Register = () => {
   const onChange = (key, value) => {
     setData((e) => ({ ...e, [key]: value }));
   };
+  const thisYear = moment().format("jYYYY");
 
   return (
     <div className="container !pt-0 min-h-screen h-fit  relative">
@@ -82,8 +86,8 @@ const Register = () => {
           title={"استان"}
           titleClass="mr-4"
           isSearchable={false}
-          list={citites}
-          property={"title"}
+          list={Cities}
+          property={"name"}
           onSelect={(v) => {
             onChange("provience", v.id);
           }}
@@ -94,8 +98,8 @@ const Register = () => {
           title={"شهرستان"}
           titleClass="mr-4"
           isSearchable={false}
-          list={citites}
-          property={"title"}
+          list={Cities?.find((x) => x?.id == data?.provience)?.cities || []}
+          property={"name"}
           onSelect={(v) => {
             onChange("city", v.id);
           }}
@@ -122,7 +126,15 @@ const Register = () => {
         }}
         value={data?.exit_border || null}
       />
-      <SimpleTimePicker setValue={setDateOfDispatch} title={"تاریخ رفت"} />
+      <SimpleTimePicker
+        setValue={setDateOfDispatch}
+        title={"تاریخ رفت"}
+        mandatoryListYear={[{ name: thisYear, id: thisYear }]}
+        mandatoryListMonth={[
+          { name: 5, id: 5 },
+          { name: 6, id: 6 },
+        ]}
+      />
       <div className="my-4"></div>
       <FormSelect
         parentClass="my-4"
@@ -136,7 +148,15 @@ const Register = () => {
         }}
         value={data?.return_border || null}
       />{" "}
-      <SimpleTimePicker setValue={setDateOfDispatch} title={"تاریخ برگشت"} />
+      <SimpleTimePicker
+        setValue={setDateOfDispatch}
+        title={"تاریخ برگشت"}
+        mandatoryListYear={[{ name: thisYear, id: thisYear }]}
+        mandatoryListMonth={[
+          { name: 5, id: 5 },
+          { name: 6, id: 6 },
+        ]}
+      />
       {/* <Divider moreClass={"my-4"} /> */}
       {/* <FormInputs item={{ title: "کد ملی سرگروه" }} /> */}
       <RegisterGroup data={data} onChange={onChange} />

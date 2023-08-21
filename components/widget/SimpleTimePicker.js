@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useMemo } from "react";
 import FormSelect from "../shared/form/FormSelect";
 import moment from "moment-jalaali";
-function SimpleTimePicker({ title, setValue }) {
+function SimpleTimePicker({ title, setValue, mandatoryListYear, mandatoryListMonth }) {
   const [dates, setDates] = useState([
     {
       title: "روز",
@@ -12,32 +12,36 @@ function SimpleTimePicker({ title, setValue }) {
     {
       title: "ماه",
       value: "",
-      list: [
-        { name: 1, id: 1 },
-        { name: 2, id: 2 },
-        { name: 3, id: 3 },
-        { name: 4, id: 4 },
-        { name: 5, id: 5 },
-        { name: 6, id: 6 },
-        { name: 7, id: 7 },
-        { name: 8, id: 8 },
-        { name: 9, id: 9 },
-        { name: 10, id: 10 },
-        { name: 11, id: 11 },
-        { name: 12, id: 12 },
-      ],
+      list: mandatoryListMonth
+        ? mandatoryListMonth
+        : [
+            { name: 1, id: 1 },
+            { name: 2, id: 2 },
+            { name: 3, id: 3 },
+            { name: 4, id: 4 },
+            { name: 5, id: 5 },
+            { name: 6, id: 6 },
+            { name: 7, id: 7 },
+            { name: 8, id: 8 },
+            { name: 9, id: 9 },
+            { name: 10, id: 10 },
+            { name: 11, id: 11 },
+            { name: 12, id: 12 },
+          ],
     },
 
     {
       title: "سال",
-      value: "",
-      list: Array.from({ length: 180 }, (e, i) => {
-        // return { id: i + 1, reserved: i % 2 ? 1 : i % 3 ? 2 : i + (1 % 5) ? 3 : "free", month: month, year: year };
-        return {
-          id: i + 1280,
-          name: i + 1280,
-        };
-      }),
+      value: mandatoryListYear ? mandatoryListYear[0]?.id : "",
+      list: mandatoryListYear
+        ? mandatoryListYear
+        : Array.from({ length: 180 }, (e, i) => {
+            // return { id: i + 1, reserved: i % 2 ? 1 : i % 3 ? 2 : i + (1 % 5) ? 3 : "free", month: month, year: year };
+            return {
+              id: i + 1280,
+              name: i + 1280,
+            };
+          }),
     },
   ]);
   function onSelect(title, value) {

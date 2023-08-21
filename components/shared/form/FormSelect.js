@@ -148,7 +148,7 @@ const FormSelect = ({
               {options?.map((e, i) => {
                 const isSelected = e.id == value?.id;
                 return (
-                  <div key={i}>
+                  <div key={`${e?.id}options${e[property]}${i}`}>
                     <button
                       className={`${
                         isSelected
