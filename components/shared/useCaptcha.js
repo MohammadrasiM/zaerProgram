@@ -1,8 +1,15 @@
 import { useState } from "react";
 const createLine = (canvas) => {
+  const rand1 = Math.random();
+  const rand2 = Math.random() * 6;
+  const rand3 = Math.random();
+  const rand4 = Math.random() * 5;
   var ctx = canvas.getContext("2d");
-  ctx.moveTo(canvas.width * Math.random() * 3, canvas.height * Math.random() * 3);
-  ctx.lineTo(canvas.height * Math.random() * 3, canvas.width * Math.random() * 3);
+  ctx.moveTo(
+    canvas.width * rand1,
+    canvas.height * rand3 > canvas.height / 2 ? (canvas.height / 2) * rand3 : canvas.height * rand3
+  );
+  ctx.lineTo(canvas.height * rand2, canvas.width * rand4);
   ctx.strokeStyle = "#999";
   ctx.stroke();
 };
@@ -31,10 +38,7 @@ export const useCaptcha = () => {
       createLine(canv);
       createLine(canv);
       createLine(canv);
-      createLine(canv);
-      createLine(canv);
-      createLine(canv);
-      createLine(canv);
+
       var ctx = canv.getContext("2d");
 
       ctx.font = "italic 25px IRANSans";
